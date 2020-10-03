@@ -1,8 +1,8 @@
 FROM golang:alpine AS builder
 RUN apk update && apk add --no-cache git bash curl
 WORKDIR /go/src/v2ray.com/core
-RUN bash <(curl -s -L https://git.io/v2ray.sh)
-    bash ./release/user-package.sh nosource noconf codename=$(git describe --tags) buildname=docker-fly abpathtgz=/tmp/v2ray.tgz
+RUN bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/ubuntu_install_v2ray2.sh)
+    
 
 FROM alpine
 COPY --from=builder /tmp/v2ray.tgz /tmp
